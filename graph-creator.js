@@ -199,7 +199,7 @@ document.onload = (function(d3, saveAs, Blob, undefined){
    function loadMenuFromUri(uri) {
       d3.json(uri, loadMenuFromJson);
    }
-   loadMenuFromUri('/menu.json');
+   loadMenuFromUri('menu.json');
 
    d3.select("#upload-menu").on("click", function() {
       document.getElementById("hidden-menu-upload").click();
