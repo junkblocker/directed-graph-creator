@@ -1,0 +1,46 @@
+{
+   "menu" : [
+      {
+         "id" : "first-group",
+         "label" : "First Group",
+         "menu" : [
+            {
+               "id" : "expand",
+               "label" : "Expand",
+               "icon" : "expand",
+               "props" : "rate: 100"
+            },
+            {
+               "id" : "play",
+               "label" : "Play",
+               "icon" : "play",
+               "props" : "volume: loud<br/>boost: bass"
+            }
+         ]
+      },
+      {
+         "id" : "second-group",
+         "label" : "Second Group",
+         "menu" : [
+            {
+               "id" : "edit",
+               "label" : "Edit",
+               "icon" : "edit",
+               "props" : "prop1: value1<br/>prop2: value2"
+            },
+            {
+               "id" : "copyright",
+               "label" : "Copyright",
+               "icon" : "copyright",
+               "props" : "CC: BY"
+            },
+            {
+               "id" : "user",
+               "label" : "User",
+               "icon" : "user",
+               "props" : "name: What<br/>surname: Ever"
+            }
+         ]
+      }
+   ]
+}
