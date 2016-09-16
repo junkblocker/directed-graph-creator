@@ -83,20 +83,20 @@ marker{
     fill: #333;
 }
 
-g.conceptG circle{
+g.conceptG rect{
     fill: #F6FBFF;
     stroke: #333;
     stroke-width: 2px;
 }
 
-g.conceptG:hover circle{
+g.conceptG:hover rect{
     fill: rgb(200, 238, 241);
 }
 
-g.selected circle{
+g.selected rect{
     fill: rgb(250, 232, 255);
 }
-g.selected:hover circle{
+g.selected:hover rect{
     fill: rgb(250, 232, 255);
 }
 
@@ -146,7 +146,7 @@ ul.menu > li > input {
    vertical-align: middle;
 }
 
-rect.props {
+g.conceptG rect.props {
    rx: 2px;
    ry: 2px;
    stroke: black;
