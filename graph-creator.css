@@ -1,0 +1,210 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+}
+
+p{ 
+     overflow: overlay;
+     position: relative;
+     background: yellow;
+    font: 10px sans-serif;    
+}
+pre{ 
+     overflow: overlay;
+     position: relative;
+     background: yellow;
+   font-size: 10px;
+}
+
+body{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: rgb(248, 248, 248)
+}
+
+#toolbox, #menu {
+    border: 2px solid #EEEEEE;
+    border-radius: 5px;
+    padding: 1em;
+    z-index: 5;
+}
+
+#toolbox {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0.5em;
+    margin-left: 1em;
+}
+#toolbox input{
+    width: 30px;
+    opacity: 0.4;
+}
+#toolbox input:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+#menu {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    padding: 0.5em;
+    padding-right: 1em;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+}
+#menu input{
+    width: 50px;
+}
+#menu input:hover{
+    opacity: 1;
+    cursor: pointer;
+}
+
+#hidden-file-upload, #hidden-menu-upload {
+    display: none;
+}
+
+#download-input{
+    margin: 0 0.5em;
+}
+
+.conceptG text{
+    pointer-events: none;
+}
+
+marker{
+    fill: #333;
+}
+
+g.conceptG circle{
+    fill: #F6FBFF;
+    stroke: #333;
+    stroke-width: 2px;
+}
+
+g.conceptG:hover circle{
+    fill: rgb(200, 238, 241);
+}
+
+g.selected circle{
+    fill: rgb(250, 232, 255);
+}
+g.selected:hover circle{
+    fill: rgb(250, 232, 255);
+}
+
+rect.node {
+   rx: 6px;
+   ry: 6px;
+   stroke: black;
+   stroke-width: 2px;
+   fill: white;
+}
+
+path.link {
+    fill: none;
+    stroke: #333;
+    stroke-width: 2px;
+    cursor: default;
+}
+
+path.link:hover{
+    stroke: rgb(94, 196, 204);
+}
+
+g.connect-node circle{
+    fill: #BEFFFF;
+}
+
+path.link.hidden{
+    stroke-width: 0;
+}
+
+path.link.selected {
+    stroke: rgb(229, 172, 247);
+}
+
+ul.menu {
+   list-style-type: none;
+   margin: 0;
+}
+
+ul.menu > li {
+   margin: 0.1em 0 0.2em -2.5em;
+   padding: 0;
+   vertical-align: middle;
+}
+
+ul.menu > li > input {
+   vertical-align: middle;
+}
+
+rect.props {
+   rx: 2px;
+   ry: 2px;
+   stroke: black;
+   stroke-width: 2px;
+   fill: blue;
+}
+
+div.tooltip {  
+    position: absolute;       
+    min-width: 130px;
+    /* height: 28px; */
+    padding: 2px;
+    font: 10px sans-serif;    
+    background: lightgreen;  
+    border: 0px;     
+    border-radius: 8px;       
+    pointer-events: none;        
+}
+
+textarea {
+   min-height: 200px;
+}
+
+ul.mainmenu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: blue;
+}
+
+ul.mainmenu li {
+    float: left;
+}
+
+ul.mainmenu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 4px 6px;
+    text-decoration: none;
+}
+
+ul.mainmenu li a:hover {
+   color: black;
+   background-color: white;
+   cursor: pointer;
+}
+
+ul.mainmenu li a.active {
+    background-color: #4CAF50;
+}
+
+div#menu > ul {
+   display: none;
+}
+
+span.icon {
+   min-width: 2em;
+   text-align: center;
+}
