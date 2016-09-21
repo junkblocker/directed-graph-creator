@@ -486,6 +486,7 @@ document.onload = (function(d3, saveAs, Blob, undefined){
           .on("blur", function(d){
             d.props = this.value.replace(/\n/g, "<br/>");
             d3.select(this.parentElement).remove();
+            d3node.editing = false;
           });
     return d3txt;
   };
@@ -531,6 +532,16 @@ document.onload = (function(d3, saveAs, Blob, undefined){
 //          var txtNode = d3txt.node();
 //          thisGraph.selectElementContents(txtNode);
 //          txtNode.focus();
+
+         }
+         else if (d3.event.altKey) {
+            var div = thisGraph.tooltip;
+            div.style("opacity", 0);
+            div.editing = true;
+            var d3txt = thisGraph.changeTextOfNode(div, d);
+            var txtNode = d3txt.node();
+            thisGraph.selectElementContents(txtNode);
+            txtNode.focus();
         } else{
           if (state.selectedEdge){
             thisGraph.removeSelectFromEdge();
@@ -662,6 +673,31 @@ document.onload = (function(d3, saveAs, Blob, undefined){
       )
       .on("mouseup", function(d){
         state.mouseDownLink = null;
+        if (d3.event.altKey) {
+            var div = thisGraph.tooltip;
+            div.style("opacity", 0);
+            div.editing = true;
+            var d3txt = thisGraph.changeTextOfNode(div, d);
+            var txtNode = d3txt.node();
+            thisGraph.selectElementContents(txtNode);
+            txtNode.focus();
+        }
+      })
+      .on("mouseover", function(d){
+         if (! d.props) {
+            d.props = "some property";
+         }
+         thisGraph.tooltip.transition()     
+               .duration(200)      
+               .style("opacity", .9)
+               .style("left", (d3.event.pageX + 10) + "px")     
+               .style("top", (d3.event.pageY - 28) + "px");   
+         thisGraph.tooltip.html(d.props);
+      })
+      .on("mouseout", function(d){
+         thisGraph.tooltip.transition()     
+               .duration(500)      
+               .style("opacity", 0);  
       });
 
     // remove old links
@@ -681,15 +717,39 @@ document.onload = (function(d3, saveAs, Blob, undefined){
         if (state.shiftNodeDrag){
           d3.select(this).classed(consts.connectClass, true);
         }
+        var div = thisGraph.tooltip;
+        if (! div.editing) {
+            div.transition()     
+                .duration(200)      
+                .style("opacity", .9)
+                .style("left", (d3.event.pageX + 10) + "px")     
+                .style("top", (d3.event.pageY - 28) + "px");   
+            div.html(d.props);
+        }
       })
       .on("mouseout", function(d){
-        d3.select(this).classed(consts.connectClass, false);
+         d3.select(this).classed(consts.connectClass, false);
+         thisGraph.tooltip.transition()     
+            .duration(500)      
+            .style("opacity", 0);  
       })
       .on("mousedown", function(d){
-        thisGraph.circleMouseDown.call(thisGraph, d3.select(this), d);
+         thisGraph.circleMouseDown.call(thisGraph, d3.select(this), d);
+         thisGraph.tooltip.transition()     
+            .duration(500)      
+            .style("opacity", 0);  
       })
       .on("mouseup", function(d){
         thisGraph.circleMouseUp.call(thisGraph, d3.select(this), d);
+        var div = thisGraph.tooltip;
+        if (false && ! div.editing) {
+            div.transition()     
+                .duration(200)      
+                .style("opacity", .9)
+                .style("left", (d3.event.pageX + 10) + "px")     
+                .style("top", (d3.event.pageY - 28) + "px");   
+            div.html(d.props);
+        }
       })
       .call(thisGraph.drag);
 
@@ -704,7 +764,7 @@ document.onload = (function(d3, saveAs, Blob, undefined){
 
     newGs.each(function(d){
       thisGraph.insertTitle(d3.select(this), d.title);
-      thisGraph.insertProperties(d3.select(this), d);
+      // thisGraph.insertProperties(d3.select(this), d);
     });
 
     // remove old nodes

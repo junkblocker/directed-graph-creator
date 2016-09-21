@@ -111,7 +111,7 @@ rect.node {
 path.link {
     fill: none;
     stroke: #333;
-    stroke-width: 2px;
+    stroke-width: 3px;
     cursor: default;
 }
 
