@@ -332,13 +332,14 @@ document.onload = (function(d3, saveAs, Blob, undefined){
 
   /* insert svg line breaks: taken from http://stackoverflow.com/questions/13241475/how-do-i-include-newlines-in-labels-in-d3-charts */
   GraphCreator.prototype.insertTitle = function (gEl, title) {
-    var icon = GraphCreator.FONT_AWESOME[title];
+    var titleArray = title.split(',');
+    var titleTxt = titleArray.map(function(d) { return GraphCreator.FONT_AWESOME[d]; }).join(' ');
     var el = gEl.append("text")
           .attr("text-anchor","middle")
           .attr('font-family', 'FontAwesome')
           .attr('dominant-baseline', 'central')
           .attr('font-size', '20px')
-          .text(icon);
+          .text(titleTxt);
   };
 
    GraphCreator.prototype.insertProperties = function(gEl, node) {
@@ -755,12 +756,11 @@ document.onload = (function(d3, saveAs, Blob, undefined){
 
    newGs.append("rect")
       .classed("node", true)
-      .attr("x", -consts.rectSide / 2)
+      .attr("x", function(d) { return -consts.rectSide * (0.55 + 0.45 * d.title.split(',').length) / 2 })
       .attr("y", -consts.rectSide / 2)
-      .attr("width", consts.rectSide)
+      .attr("width", function(d) { return consts.rectSide * (0.55 + 0.45 * d.title.split(',').length) })
       .attr("height", consts.rectSide)
       .attr("transform", function(d, i) { return "scale(" + (1 - d / consts.rectSide) * 20 + ")"; });
-
 
     newGs.each(function(d){
       thisGraph.insertTitle(d3.select(this), d.title);

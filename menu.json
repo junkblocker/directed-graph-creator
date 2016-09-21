@@ -5,6 +5,12 @@
          "label" : "First Group",
          "menu" : [
             {
+               "id" : "all-first",
+               "label" : "First Group",
+               "icon" : "expand,play",
+               "props" : "rate: 100<br/>what: ever"
+            },
+            {
                "id" : "expand",
                "label" : "Expand",
                "icon" : "expand",
